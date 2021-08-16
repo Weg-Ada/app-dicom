@@ -1,0 +1,41 @@
+<div class="container">
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><dt class="col-sm-6">Examination Name</dt></td>
+      <td><%= @examination.name %></td>
+    </tr>
+    <tr>
+      <td><dt class="col-sm-6">Examinated at</dt></td>
+      <td><%= @examination.examinated_at %></td>
+    </tr>
+    <tr>
+      <td><dt class="col-sm-6">Patient Name</dt></td>
+      <td><%= @examination.patient.name %></td>
+    </tr>
+    <tr>
+      <td><dt class="col-sm-6">Age</dt></td>
+      <td><%= @dicom[:age] %></td>
+    </tr>
+    <tr>
+      <td><dt class="col-sm-6">Gender</dt></td>
+      <td><%= @dicom[:gender] %></td>
+    </tr>
+  </tbody>
+</table>
+
+<center>
+  <%= link_to 'Download Image', show_image_path(id: @examination.id, disp: 'attachment'), class: "badge badge-secondary"%> |
+  <% if @current_user.is_admin %>
+    <%= link_to 'Edit', edit_examination_path(@examination), class: "badge badge-secondary"%> |
+  <% end %>
+  <%= link_to 'Back', examinations_path, class: "badge badge-secondary"%>
+
+  <div>
+    <br>
+    <%= image_tag url_for(show_image_path(id: @examination.id, disp: 'inline')), class: "img-fluid" %>
+  </div>
+
+</div>
+</center>

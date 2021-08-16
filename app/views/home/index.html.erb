@@ -1,0 +1,34 @@
+<div class="jumbotron">
+  <h1 class="display-4">"AS" Archiving System</h1>  
+    <p><h5 class="text-justify">
+     AS (Archiving System) is a application for viewing, editing all made imaging examinations in history. The application allows you to manage the patient's profile. </h5></p>
+    <h5>Basic functionalities:</h5>
+    <ul>
+       <li> 
+       searching for medical imaging examinations </li>
+       <li> 
+       displaying and downloading medical images </li>
+       <li> 
+       managment Patient Profile </li>
+       <li> 
+       managment of available medical imaging (admin) </li>
+       <li> 
+       enterning new medical images with a description (admin) </li>
+       <li> 
+       enterning new patients (admin) </li>
+    </ul>
+    <h2>What is AS? </h2>
+    <p class="text-justify">The Administrator can enter data on medical images and present them on the portal. Patients can search all their examinations and download medical images. The application does not have to be installed. To have access to the system, you must have an account. </p>
+    <hr class="my-4">
+    <p>Start browsing!</p>
+    <p class="lead">
+      <%= link_to 'Examinations', examinations_url, class: "btn btn-secondary btn-lg btn-block"%>
+      <% if @current_user.is_admin %>
+      <%= link_to 'Patients', patients_url, class: "btn btn-secondary btn-lg btn-block"%>
+      <% else %>
+      <%= link_to 'My Profile', patient_path(@current_user.id), class: "btn btn-secondary btn-lg btn-block"%>
+    </p>
+    <% end %>
+      
+    </p>
+</div>

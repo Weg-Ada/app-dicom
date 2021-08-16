@@ -1,0 +1,27 @@
+<div class="container">
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><dt class="col-sm-6">Patient Name</dt></td>
+      <td><%= @patient.name %></td>
+    </tr>
+    <tr>
+      <td><dt class="col-sm-6">Login</dt></td>
+      <td><%= @patient.login %></td>
+    </tr>
+    <tr>
+      <td><dt class="col-sm-6">Admin</dt></td>
+      <td><%= @patient.is_admin %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_patient_path(@patient), class: "badge badge-info" %> |
+<% if @current_user.is_admin %>
+  <%= link_to 'Back', patients_path, class: "badge badge-info" %>
+<% else %>
+  <%= link_to 'Back', examinations_path, class: "badge badge-info" %>
+<% end %>
+
+</div>

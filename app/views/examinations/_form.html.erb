@@ -1,0 +1,39 @@
+<%= form_with(model: examination, local: true) do |form| %>
+  <% if examination.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(examination.errors.count, "error") %> prohibited this examination from being saved:</h2>
+
+      <ul>
+      <% examination.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :path %>
+    <%= form.text_field :path, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :examinated_at %>
+    <br>
+    <%= form.datetime_select :examinated_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :patient_id %>
+    <%= form.text_field :patient_id, class: "form-control" %>
+  </div>
+  <br>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

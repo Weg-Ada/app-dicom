@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>"AS" Archiving System</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    
+  </head>
+    <body>
+      <div class="container">
+        
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <% if @current_user %>
+            <a class="navbar-brand" href="/home" >"AS" Archiving System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <% if @current_user.is_admin %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/examinations">All Examinations</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/patients">All Patients</a>
+                </li>
+                <% else %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/examinations">My Examinations</a>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "My Profile", patient_path(@current_user.id), class: "nav-link" %>
+                  </li>
+                <% end %>
+              </ul>
+
+              <% if session[:patient_id] %>
+                <%= button_to 'Log out', logout_path, method: :delete, class: "btn btn-danger btn" %>
+              <% else %>
+                <%= button_to 'Log in', login_path, class: "btn btn-success btn" %>
+              <% end %>
+             </div>
+
+        <% else %>
+            <% if session[:patient_id] %>
+                <%= button_to 'Log out', logout_path, method: :delete, class: "btn btn-danger btn" %>
+              <% else %>
+                <%= button_to 'Log in', login_path, class: "btn btn-success btn" %>
+              <% end %>
+             
+        <% end %>     
+        </nav>
+
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+        
+        <div class="jumbotron">
+
+        <%= yield %>
+
+        </div>
+      </div>
+    </body>
+
+        <footer>
+
+          <div class="footer-copyright text-center py-3">©Copyright 2018 "AS" Archiving System. All rights reserved.
+          </div>
+
+        </footer>
+</html>

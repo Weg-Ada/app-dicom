@@ -1,0 +1,35 @@
+<div class="container">
+
+<h2>Examinations</h2>
+
+<% if @current_user.is_admin %>
+  <%= link_to 'New Examinations', new_examination_path, class: "btn btn-success btn-lg" %>
+<% end %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Examinated at</tzh>
+      <th scope="col">Patient</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @examinations.each do |examination| %>
+      <tr>
+        <td><%= examination.name %></td>
+        <td><%= examination.examinated_at %></td>
+        <td><%= examination.patient.name %></td>
+        <td><%= link_to 'Show', examination, class: "btn btn-primary"%></td>
+        <% if @current_user.is_admin %>
+	        <td><%= link_to 'Edit', edit_examination_path(examination), class: "btn btn-warning" %></td>
+          <td><%= link_to 'Destroy', examination, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+</div>

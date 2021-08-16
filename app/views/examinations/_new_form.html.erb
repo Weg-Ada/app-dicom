@@ -1,0 +1,31 @@
+<%= form_with(model: examination, local: true) do |form| %>
+  <% if examination.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(examination.errors.count, "error") %> prohibited this examination from being saved:</h2>
+
+      <ul>
+      <% examination.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <center>
+
+  <div class="container" style="margin-top:30px">
+    <div class="field">
+      <%= form.label :path %>
+      <%= form.text_field :path, class: "form-control" %>
+    </div>
+
+    <br>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+
+    </div>
+
+  </center>
+<% end %>

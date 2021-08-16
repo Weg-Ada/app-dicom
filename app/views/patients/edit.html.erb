@@ -1,0 +1,15 @@
+<div class="container">
+
+<h2>Editing Patient</h2>
+
+<%= render 'form', patient: @patient %>
+
+<%= link_to 'Show', @patient, class: "badge badge-info" %> |
+
+<% if @current_user.is_admin %>
+  <%= link_to 'Back', patients_path, class: "badge badge-info" %>
+<% else %>
+  <%= link_to 'Back', patient_path(@current_user.id), class: "badge badge-info" %>
+<% end %>
+
+</div>

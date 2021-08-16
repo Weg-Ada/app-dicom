@@ -1,0 +1,30 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- Include the above in your HEAD tag -->
+<div class="container" style="margin-top:30px">
+  <div class="col-md-6">
+    <div class="login-panel panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><legend>Login Panel</legend></h3>
+      </div>
+        <div class="panel-body">
+
+<%= form_tag do %>
+  
+  <div>
+    <%= label_tag :login, 'Login' %>
+    <%= text_field_tag :login, params[:login], class: "form-control" %>
+  </div>
+
+  <div>
+    <%= label_tag :password, 'Password' %>
+    <%= password_field_tag :password, params[:password], class: "form-control" %>
+  </div>
+
+  <div>
+    <%= submit_tag "Log in", class: "btn btn-success" %>
+  </div>
+<% end %>
+
+    </div>
+  </div>
+</div>
